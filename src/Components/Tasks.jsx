@@ -97,8 +97,8 @@ export const Tasks = () => {
     return (
         <div className='min-h-screen bg-gradient-to-t lg:w-1/4 from-cyan-500 to-blue-500'>
             <div className='flex flex-col mt-10 lg:mt-48'>
-                <p className=''>
-                    <strong className='text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#c7726a] to-yellow-400 ml-7'>
+                <p className='flex items-center justify-center mb-2'>
+                    <strong className='text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#c7726a] to-yellow-400'>
                         Tasks
                     </strong>
                     <span className='ml-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-[#c7726a]'>
