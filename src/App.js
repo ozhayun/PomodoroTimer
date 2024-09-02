@@ -41,7 +41,7 @@ function App() {
           clearInterval(timer);
           handleTimerEnd();
         }
-      }, 1000);  // Changed to 1000ms for 1 second intervals
+      }, 1000);
     }
     return () => clearInterval(timer);
   }, [isActive, sec, min, handleTimerEnd]);
@@ -84,6 +84,24 @@ function App() {
     setTimerDuration(timerType);
   };
 
+  const onUp = () => {
+    let newMin = min;
+    if (sec !== 0) newMin++
+    newMin++
+    setMin(newMin);
+    setSec(0);
+  }
+
+  const onDown = () => {
+    let newMin = min;
+    if (sec === 0) {
+      newMin--;
+      setMin(newMin);
+    } else {
+      setSec(0);
+    }
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-col flex-grow md:flex-row">
@@ -105,6 +123,8 @@ function App() {
             onStart={handleStart}
             onStop={handleStop}
             onRestart={handleRestart}
+            onUp={onUp}
+            onDown={onDown}
           />
         </div>
         <Tasks />
