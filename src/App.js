@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Pomodoro from './Components/Pomodoro';
 import Progress from './Components/Progress';
 import Tasks from './Components/Tasks';
@@ -29,7 +29,7 @@ function App() {
       }, 1);
     }
     return () => clearInterval(timer);
-  }, [isActive, sec, min]);
+  }, [isActive, sec, min, handleTimerEnd]);
 
   useEffect(() => {
     if (shouldTransition) {
@@ -63,7 +63,7 @@ function App() {
     setTimerDuration(selectedTimer);
   };
 
-  const handleTimerEnd = () => {
+  const handleTimerEnd = useCallback(() => {
     setIsActive(false);
     if (selectedTimer === 'pomodoro') {
       setPomodoroCount(pomodoroCount + 1);
@@ -76,7 +76,7 @@ function App() {
       setSelectedTimer('pomodoro');
     }
     setShouldTransition(true);
-  };
+  }, [selectedTimer]);
 
   const handleSelectTimer = (timerType) => {
     setSelectedTimer(timerType);

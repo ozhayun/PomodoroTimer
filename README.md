@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Pomodoro Timer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This Pomodoro Timer is a web application built with React and Tailwind CSS. It helps users manage their time effectively using the Pomodoro Technique, a time management method developed by Francesco Cirillo. The app features a customizable timer, task management, and progress tracking.
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+Check out the live version of the app: [Italian Tomato - Pomodoro Timer](https://italian-tomato.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Customizable Timer**: Set focus sessions (Pomodoro), short breaks, and long breaks.
+- **Task Management**: Add, edit, delete, and reorder tasks.
+- **Progress Tracking**: Keep track of completed Pomodoros, short breaks, and long breaks.
+- **Responsive Design**: Works seamlessly on desktop and mobile devices.
+- **Drag and Drop**: Reorder tasks easily with drag and drop functionality.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- Tailwind CSS
+- react-beautiful-dnd (for drag and drop)
+- Material-UI Icons
 
-### `npm run build`
+## Setup and Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/pomodoro-timer.git
+   cd pomodoro-timer
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Set Timer**: Choose between Pomodoro (25 minutes), Short Break (5 minutes), or Long Break (15 minutes).
+2. **Start Timer**: Click the "Start" button to begin the countdown.
+3. **Manage Tasks**: Add new tasks, mark them as complete, edit, or delete them.
+4. **Track Progress**: View your completed Pomodoros and breaks at the top of the page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is deployed on Netlify. You can view the live version at [https://italian-tomato.netlify.app/](https://italian-tomato.netlify.app/).
 
-## Learn More
+To deploy your own version:
+1. Fork this repository
+2. Connect your GitHub account to Netlify
+3. Choose the forked repository for deployment
+4. Netlify will automatically deploy when you push changes to your main branch
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is open source and available under the [MIT License](LICENSE).
 
-### Analyzing the Bundle Size
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Pomodoro Technique by Francesco Cirillo
+- Icons provided by [Flaticon](https://www.flaticon.com/)
+- React Beautiful DnD for drag and drop functionality
+- Material-UI for icons
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Created with ❤️ by [Your Name]
