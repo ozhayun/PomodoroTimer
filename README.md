@@ -64,9 +64,6 @@ To deploy your own version:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
@@ -74,7 +71,3 @@ This project is open source and available under the [MIT License](LICENSE).
 - Icons provided by [Flaticon](https://www.flaticon.com/)
 - React Beautiful DnD for drag and drop functionality
 - Material-UI for icons
-
----
-
-Created with ❤️ by [Your Name]

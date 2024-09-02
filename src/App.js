@@ -13,6 +13,21 @@ function App() {
   const [selectedTimer, setSelectedTimer] = useState('pomodoro');
   const [shouldTransition, setShouldTransition] = useState(false);
 
+  const handleTimerEnd = useCallback(() => {
+    setIsActive(false);
+    if (selectedTimer === 'pomodoro') {
+      setPomodoroCount(prevCount => prevCount + 1);
+      setSelectedTimer('shortRest');
+    } else if (selectedTimer === 'shortRest') {
+      setShortRestCount(prevCount => prevCount + 1);
+      setSelectedTimer('pomodoro');
+    } else if (selectedTimer === 'longRest') {
+      setLongRestCount(prevCount => prevCount + 1);
+      setSelectedTimer('pomodoro');
+    }
+    setShouldTransition(true);
+  }, [selectedTimer]);
+
   useEffect(() => {
     let timer;
     if (isActive) {
@@ -26,7 +41,7 @@ function App() {
           clearInterval(timer);
           handleTimerEnd();
         }
-      }, 1);
+      }, 1000);  // Changed to 1000ms for 1 second intervals
     }
     return () => clearInterval(timer);
   }, [isActive, sec, min, handleTimerEnd]);
@@ -63,26 +78,12 @@ function App() {
     setTimerDuration(selectedTimer);
   };
 
-  const handleTimerEnd = useCallback(() => {
-    setIsActive(false);
-    if (selectedTimer === 'pomodoro') {
-      setPomodoroCount(pomodoroCount + 1);
-      setSelectedTimer('shortRest');
-    } else if (selectedTimer === 'shortRest') {
-      setShortRestCount(shortRestCount + 1);
-      setSelectedTimer('pomodoro');
-    } else if (selectedTimer === 'longRest') {
-      setLongRestCount(longRestCount + 1);
-      setSelectedTimer('pomodoro');
-    }
-    setShouldTransition(true);
-  }, [selectedTimer]);
-
   const handleSelectTimer = (timerType) => {
     setSelectedTimer(timerType);
     setIsActive(false);
     setTimerDuration(timerType);
   };
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-col flex-grow md:flex-row">
