@@ -3,6 +3,8 @@ import Pomodoro from './Components/Pomodoro';
 import Progress from './Components/Progress';
 import Tasks from './Components/Tasks';
 
+const bellSounds = new Audio('/sounds/bell-ring.mp3')
+
 function App() {
   const [min, setMin] = useState(25);
   const [sec, setSec] = useState(0);
@@ -14,6 +16,7 @@ function App() {
   const [shouldTransition, setShouldTransition] = useState(false);
 
   const handleTimerEnd = useCallback(() => {
+    bellSounds.play();
     setIsActive(false);
     if (selectedTimer === 'pomodoro') {
       setPomodoroCount(prevCount => prevCount + 1);

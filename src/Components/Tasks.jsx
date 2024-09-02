@@ -8,6 +8,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import DoneIcon from '@mui/icons-material/Done';
 
+const whooshAudio = new Audio('/sounds/whoosh.mp3');
+
 export const Tasks = () => {
     const [isAddingTask, setIsAddingTask] = useState(false);
     const [hoveredTaskDoneId, setHoveredTaskDoneId] = useState(null);
@@ -47,12 +49,23 @@ export const Tasks = () => {
         ));
     };
 
-    const handleDelete = (e, id) => {
-        e.stopPropagation();
+    const playWhoosh = () => {
+        whooshAudio.playbackRate = 1.5;
+        whooshAudio.volume = 0.8;
+        whooshAudio.play().catch(error => console.error("Error playing sound:", error));
+    }
+
+    const deleteTransition = (id) => {
         const taskElement = document.getElementById(`task-${id}`);
         taskElement.style.transition = 'opacity 0.4s, transform 0.4s';
         taskElement.style.opacity = '0';
         taskElement.style.transform = 'translateX(100%)';
+    }
+
+    const handleDelete = (e, id) => {
+        e.stopPropagation();
+        deleteTransition(id);
+        playWhoosh();
         setTimeout(() => {
             setTasks(tasks.filter((task) => task.id !== id));
         }, 400);
