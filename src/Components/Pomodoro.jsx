@@ -4,18 +4,18 @@ import Timer from './Timer';
 
 const bellSounds = new Audio('/sounds/bell-ring.mp3');
 
-export const Pomodoro = () => {
+export const Pomodoro = ({ settings, updateSettings, onReset }) => {
     const [timer, setTimer] = useState({ min: 25, sec: 0 });
     const [isActive, setIsActive] = useState(false);
     const [mode, setMode] = useState('pomodoro');
     const [iterations, setIterations] = useState(1);
     const [currentIteration, setCurrentIteration] = useState(0);
-    const [settings, setSettings] = useState({
-        pomodoro: 25,
-        shortBreak: 5,
-        longBreak: 15,
-        longBreakInterval: 3
-    });
+    // const [settings, setSettings] = useState({
+    //     pomodoro: 25,
+    //     shortBreak: 5,
+    //     longBreak: 15,
+    //     longBreakInterval: 3
+    // });
     const [counts, setCounts] = useState({
         pomodoro: 0,
         shortBreak: 0,
@@ -93,10 +93,10 @@ export const Pomodoro = () => {
     const handleStart = () => setIsActive(true);
     const handleStop = () => setIsActive(false);
     const handleRestart = () => {
-        setIsActive(false);
         resetTimer();
         resetSettings();
     };
+
 
     const resetSettings = () => {
         setTimer({ min: 25, sec: 0 });
@@ -104,12 +104,7 @@ export const Pomodoro = () => {
         setMode('pomodoro')
         setIterations(1)
         setCurrentIteration(0)
-        setSettings({
-            pomodoro: 25,
-            shortBreak: 5,
-            longBreak: 15,
-            longBreakInterval: 3
-        })
+        onReset()
         setCounts({
             pomodoro: 0,
             shortBreak: 0,
