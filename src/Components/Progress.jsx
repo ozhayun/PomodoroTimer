@@ -34,18 +34,18 @@ export const Progress = ({
             </div>
             <div className="flex items-center">
                 {isActive ?
-                    <div className="p-1 text-white text-md sm:text-sm md:text-base"
+                    <div className="p-0.5 text-white sm:text-lg"
                     >
                         Iteration: {currentIteration} / {iterations}
                     </div>
                     :
                     <>
-                        <label htmlFor="iterations" className="mr-2 text-white">Iterations:</label>
+                        <label htmlFor="iterations" className="text-base text-white">Iterations:</label>
                         <select
                             id="iterations"
                             value={totalIterations}
                             onChange={onIterationChange}
-                            className="p-1 text-xs border-2 rounded-lg sm:text-sm md:text-base"
+                            className="p-0.5 ml-2 text-xs border-2 rounded-lg sm:text-sm md:text-base"
                         >
                             {[...Array(10)].map((_, i) => (
                                 <option key={i + 1} value={i + 1}>{i + 1}</option>

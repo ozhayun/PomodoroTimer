@@ -85,7 +85,7 @@ export const Pomodoro = ({ settings, updateSettings, onReset }) => {
                         return prev;
                     }
                 });
-            }, 1000);
+            },);
         }
         return () => clearInterval(interval);
     }, [isActive, handleTimerEnd]);

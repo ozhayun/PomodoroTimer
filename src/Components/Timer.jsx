@@ -31,21 +31,21 @@ export const Timer = ({ min, sec, isActive, onStart, onStop, onRestart, onUp, on
                     </div>
                 </div>
             </div>
-            <div className='flex flex-row w-full max-w-xs mt-8 space-x-4 sm:mt-10 md:mt-12 sm:max-w-sm'>
+            <div className='flex flex-row w-2/3 max-w-xs mt-8 space-x-4 sm:mt-10 md:mt-12 sm:max-w-sm'>
                 <button
-                    className='flex-1 text-white text-sm sm:text-base md:text-lg bg-[#e6b507] rounded-lg hover:bg-[#f5cb38] h-10 sm:h-12'
+                    className='flex-1 text-white text-sm sm:text-base md:text-lg  bg-gradient-to-r from-[#9c27b0] to-yellow-400  rounded-lg hover:bg-[#f5cb38] h-10 sm:h-12'
                     onClick={isActive ? onStop : onStart}
                 >
                     {isActive ? "Stop" : "Start"}
                 </button>
-                <button
+                {/* <button
                     // className={`flex-1 text-white text-sm sm:text-base md:text-lg rounded-lg ${!isActive ? 'bg-[#a19ba3]' : 'bg-[#9c27b0] hover:bg-purple-500'}   h-10 sm:h-12`}
                     className={`flex-1 text-white text-sm sm:text-base md:text-lg rounded-lg bg-[#9c27b0] hover:bg-purple-500' h-10 sm:h-12`}
                     onClick={onRestart}
                 // disabled={!isActive}
                 >
                     Restart
-                </button>
+                </button> */}
             </div>
         </div>
     );
