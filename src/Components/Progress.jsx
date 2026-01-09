@@ -12,43 +12,43 @@ export const Progress = ({
 }) => {
     return (
         <div className="flex flex-col items-center mt-4 sm:mt-6 md:mt-8">
-            <div className="flex flex-row pb-2 mb-4 space-x-2 overflow-x-auto sm:space-x-4">
+            <div className="flex flex-row pb-2 mb-4 space-x-2 overflow-x-auto sm:space-x-3">
                 <button
-                    className={`flex-shrink-0 border-2 p-2 md:p-4 rounded-lg text-xs sm:text-sm md:text-base text-white hover:bg-sky-900 hover:border-sky-900 ${mode === 'pomodoro' ? 'bg-sky-900' : ''}`}
+                    className={`flex-shrink-0 glass-button px-4 py-2 rounded-xl text-xs sm:text-sm md:text-base text-slate-800 dark:text-slate-100 font-medium transition-all duration-200 ${mode === 'pomodoro' ? 'ring-2 ring-slate-400 dark:ring-slate-300 ring-opacity-50' : ''}`}
                     onClick={() => onModeChange('pomodoro')}
                 >
                     Pomodoro {counts.pomodoro}
                 </button>
                 <button
-                    className={`flex-shrink-0 border-2 p-2 md:p-4 rounded-lg text-xs sm:text-sm md:text-base text-white hover:bg-sky-900 hover:border-sky-900 ${mode === 'shortBreak' ? 'bg-sky-900' : ''}`}
+                    className={`flex-shrink-0 glass-button px-4 py-2 rounded-xl text-xs sm:text-sm md:text-base text-slate-800 dark:text-slate-100 font-medium transition-all duration-200 ${mode === 'shortBreak' ? 'ring-2 ring-slate-400 dark:ring-slate-300 ring-opacity-50' : ''}`}
                     onClick={() => onModeChange('shortBreak')}
                 >
                     Short Rest {counts.shortBreak}
                 </button>
                 <button
-                    className={`flex-shrink-0 border-2 p-2 md:p-4 rounded-lg text-xs sm:text-sm md:text-base text-white hover:bg-sky-900 hover:border-sky-900 ${mode === 'longBreak' ? 'bg-sky-900' : ''}`}
+                    className={`flex-shrink-0 glass-button px-4 py-2 rounded-xl text-xs sm:text-sm md:text-base text-slate-800 dark:text-slate-100 font-medium transition-all duration-200 ${mode === 'longBreak' ? 'ring-2 ring-slate-400 dark:ring-slate-300 ring-opacity-50' : ''}`}
                     onClick={() => onModeChange('longBreak')}
                 >
                     Long Rest {counts.longBreak}
                 </button>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center glass-card px-4 py-2 rounded-xl">
                 {isActive ?
-                    <div className="p-1 text-white text-md sm:text-sm md:text-base"
+                    <div className="text-slate-800 dark:text-slate-100 text-sm sm:text-base md:text-lg font-medium"
                     >
                         Iteration: {currentIteration} / {iterations}
                     </div>
                     :
                     <>
-                        <label htmlFor="iterations" className="mr-2 text-white">Iterations:</label>
+                        <label htmlFor="iterations" className="mr-2 text-slate-700 dark:text-slate-300 text-sm sm:text-base">Iterations:</label>
                         <select
                             id="iterations"
                             value={totalIterations}
                             onChange={onIterationChange}
-                            className="p-1 text-xs border-2 rounded-lg sm:text-sm md:text-base"
+                            className="glass-button px-3 py-1 text-slate-800 dark:text-slate-100 text-sm sm:text-base rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-300 focus:ring-opacity-50 cursor-pointer"
                         >
                             {[...Array(10)].map((_, i) => (
-                                <option key={i + 1} value={i + 1}>{i + 1}</option>
+                                <option key={i + 1} value={i + 1} className="bg-white dark:bg-slate-800">{i + 1}</option>
                             ))}
                         </select>
                     </>

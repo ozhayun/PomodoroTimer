@@ -15,19 +15,30 @@ const AddTask = ({ onSave, onCancel, initialDescription = '' }) => {
     }
 
     return (
-        <div className='w-5/6 p-4 mt-0.5 bg-white rounded-lg'>
-            <textarea className="w-full p-2 overflow-hidden whitespace-pre-wrap border rounded resize-none focus:outline-none"
+        <div className='w-5/6 p-4 mt-0.5 glass-card rounded-xl'>
+            <textarea 
+                className="w-full p-3 overflow-hidden whitespace-pre-wrap glass-button rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-300 focus:ring-opacity-50 text-slate-800 dark:text-slate-100 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 value={description}
                 name="New Task"
                 row="1"
                 maxLength="500"
                 id="New Task"
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder='Task description' />
-            <div className='flex flex-row items-start justify-start'>
-                <button className='w-1/4 m-2 text-white bg-blue-600 rounded-lg' onClick={handleSave}>
-                    {initialDescription ? 'Update' : 'Save'}</button>
-                <button className='w-1/4 m-2 text-black rounded-md hover:bg-sky-100' onClick={onCancel}>Cancel</button>
+                placeholder='Task description' 
+            />
+            <div className='flex flex-row items-start justify-start mt-3 space-x-2'>
+                <button 
+                    className='px-4 py-2 glass-button text-slate-800 dark:text-slate-100 rounded-xl font-medium transition-all duration-200' 
+                    onClick={handleSave}
+                >
+                    {initialDescription ? 'Update' : 'Save'}
+                </button>
+                <button 
+                    className='px-4 py-2 glass-button text-slate-800 dark:text-slate-100 rounded-xl font-medium transition-all duration-200' 
+                    onClick={onCancel}
+                >
+                    Cancel
+                </button>
             </div>
         </div>
     )

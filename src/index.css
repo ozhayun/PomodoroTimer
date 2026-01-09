@@ -2,8 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --glass-bg-light: rgba(255, 255, 255, 0.25);
+        --glass-bg-dark: rgba(0, 0, 0, 0.4);
+        --glass-border-light: rgba(255, 255, 255, 0.5);
+        --glass-border-dark: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+        @apply antialiased;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        @apply bg-gradient-to-br from-slate-300 via-slate-400 to-slate-500 dark:from-slate-900 dark:via-slate-800 dark:to-slate-950;
+        @apply text-slate-900 dark:text-slate-100;
+        min-height: 100vh;
+        transition: background-color 0.3s ease;
+    }
+}
+
 @layer utilities {
     .clip-hourglass {
         clip-path: polygon(50% 0%, 100% 0%, 100% 25%, 75% 50%, 100% 75%, 100% 100%, 0% 100%, 0% 75%, 25% 50%, 0% 25%, 0% 0%);
+    }
+
+    .glass {
+        @apply backdrop-blur-2xl;
+        /* background: rgba(255, 255, 255, 0.25); */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .dark .glass {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+        @apply backdrop-blur-xl;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .dark .glass-card {
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-button {
+        @apply backdrop-blur-lg;
+        background: rgba(255, 255, 255, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+        @apply transition-all duration-200;
+    }
+
+    .dark .glass-button {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-button:hover {
+        background: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 6px 16px 0 rgba(31, 38, 135, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .dark .glass-button:hover {
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
     }
 }

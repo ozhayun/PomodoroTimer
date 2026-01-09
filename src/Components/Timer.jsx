@@ -8,21 +8,21 @@ export const Timer = ({ min, sec, isActive, onStart, onStop, onRestart, onUp, on
 
     return (
         <div id='Timer' className="flex flex-col items-center mt-8 sm:mt-10">
-            <div className='w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full flex items-center justify-center bg-gradient-to-r from-[#9c27b0] to-yellow-400 p-1'>
-                <div className='w-full h-full bg-white rounded-full flex items-center justify-center text-[#b01e6e] text-4xl sm:text-5xl md:text-7xl'>
+            <div className='w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full flex items-center justify-center glass p-[2px]'>
+                <div className='w-full h-full glass-card rounded-full flex items-center justify-center text-slate-800 dark:text-slate-100 text-4xl sm:text-5xl md:text-7xl font-medium'>
                     <div className='flex flex-col items-center'>
                         <IconButton
-                            className={`transition-opacity duration-600 ${isActive || min >= 60 ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                            className={`transition-all duration-300 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 ${isActive || min >= 60 ? 'opacity-0 invisible h-0' : 'opacity-100 visible h-auto'}`}
                             onClick={onUp}
                             disabled={isActive || min >= 60}
                         >
                             <ArrowDropUpIcon sx={{ fontSize: 50 }} />
                         </IconButton>
-                        <div className='flex'>
+                        <div className='flex font-mono tracking-wider'>
                             {min}:{formattedSec}
                         </div>
                         <IconButton
-                            className={`transition-opacity duration-600 ${isActive || min <= 0 ? 'opacity-0 invisible' : 'opacity-100 visible'}`}
+                            className={`transition-all duration-300 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 ${isActive || min <= 0 ? 'opacity-0 invisible h-0' : 'opacity-100 visible h-auto'}`}
                             onClick={onDown}
                             disabled={isActive || min <= 0}
                         >
@@ -31,18 +31,16 @@ export const Timer = ({ min, sec, isActive, onStart, onStop, onRestart, onUp, on
                     </div>
                 </div>
             </div>
-            <div className='flex flex-row w-full max-w-xs mt-8 space-x-4 sm:mt-10 md:mt-12 sm:max-w-sm'>
+            <div className='flex flex-row w-full max-w-xs mt-8 space-x-3 sm:mt-10 md:mt-12 sm:max-w-sm'>
                 <button
-                    className='flex-1 text-white text-sm sm:text-base md:text-lg bg-[#e6b507] rounded-lg hover:bg-[#f5cb38] h-10 sm:h-12'
+                    className='flex-1 glass-button text-slate-800 dark:text-slate-100 text-sm sm:text-base md:text-lg rounded-xl h-11 sm:h-12 font-medium'
                     onClick={isActive ? onStop : onStart}
                 >
                     {isActive ? "Stop" : "Start"}
                 </button>
                 <button
-                    // className={`flex-1 text-white text-sm sm:text-base md:text-lg rounded-lg ${!isActive ? 'bg-[#a19ba3]' : 'bg-[#9c27b0] hover:bg-purple-500'}   h-10 sm:h-12`}
-                    className={`flex-1 text-white text-sm sm:text-base md:text-lg rounded-lg bg-[#9c27b0] hover:bg-purple-500' h-10 sm:h-12`}
+                    className='flex-1 glass-button text-slate-800 dark:text-slate-100 text-sm sm:text-base md:text-lg rounded-xl h-11 sm:h-12 font-medium'
                     onClick={onRestart}
-                // disabled={!isActive}
                 >
                     Restart
                 </button>
