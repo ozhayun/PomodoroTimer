@@ -95,8 +95,8 @@ export const Tasks = () => {
     }
 
     return (
-        <div className='px-4 py-8 lg:min-h-screen lg:w-1/4 lg:px-6'>
-            <div className='flex flex-col lg:mt-8'>
+        <div className='flex flex-col justify-center items-center px-4 py-8 lg:w-1/4 lg:px-6'>
+            <div className='flex flex-col w-full max-w-md'>
                 <p className='flex justify-center items-center mb-6'>
                     <strong className='text-4xl font-semibold text-slate-800 dark:text-slate-100'>
                         Tasks
