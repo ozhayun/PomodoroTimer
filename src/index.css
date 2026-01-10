@@ -28,6 +28,24 @@
         clip-path: polygon(50% 0%, 100% 0%, 100% 25%, 75% 50%, 100% 75%, 100% 100%, 0% 100%, 0% 75%, 25% 50%, 0% 25%, 0% 0%);
     }
 
+    /* Smooth transition utilities for mobile optimization */
+    .transition-smooth {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, opacity;
+    }
+
+    .transition-gentle {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Mobile-optimized transitions using transform and opacity */
+    @media (max-width: 640px) {
+        .transition-smooth,
+        .transition-gentle {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+
     .glass {
         @apply backdrop-blur-2xl;
         /* background: rgba(255, 255, 255, 0.25); */
@@ -76,5 +94,33 @@
     .dark .glass-button:hover {
         background: rgba(0, 0, 0, 0.6);
         box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    }
+
+    /* Smooth transition utilities for mobile optimization */
+    .transition-smooth {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, opacity;
+    }
+
+    .transition-gentle {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Mobile-optimized transitions using transform and opacity */
+    @media (max-width: 640px) {
+        .transition-smooth,
+        .transition-gentle {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        .transition-smooth,
+        .transition-gentle,
+        * {
+            transition: none !important;
+            animation: none !important;
+        }
     }
 }

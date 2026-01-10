@@ -4,7 +4,7 @@ import Timer from './Timer';
 
 const bellSounds = new Audio('/sounds/bell-ring.mp3');
 
-export const Pomodoro = () => {
+export const Pomodoro = ({ isGamificationOn = false }) => {
     const [timer, setTimer] = useState({ min: 25, sec: 0 });
     const [isActive, setIsActive] = useState(false);
     const [mode, setMode] = useState('pomodoro');
@@ -21,6 +21,14 @@ export const Pomodoro = () => {
         shortBreak: 0,
         longBreak: 0
     });
+    const [totalTomatoes, setTotalTomatoes] = useState(() => {
+        // Load total tomatoes from localStorage
+        const saved = localStorage.getItem('totalTomatoes');
+        if (saved !== null) {
+            return parseInt(saved, 10) || 0;
+        }
+        return 0;
+    });
 
     const resetTimer = useCallback(() => {
         setTimer({ min: settings[mode], sec: 0 });
@@ -30,18 +38,29 @@ export const Pomodoro = () => {
         resetTimer();
     }, [mode, resetTimer]);
 
+    useEffect(() => {
+        // Save total tomatoes to localStorage whenever it changes
+        localStorage.setItem('totalTomatoes', totalTomatoes.toString());
+    }, [totalTomatoes]);
+
     const handleTimerEnd = useCallback(() => {
         bellSounds.play();
 
         if (mode === 'pomodoro') {
-            setCounts(prev => ({ ...prev, pomodoro: prev.pomodoro + 1 }));
+            const newPomodoroCount = counts.pomodoro + 1;
+            setCounts(prev => ({ ...prev, pomodoro: newPomodoroCount }));
+            
+            // Increment total tomatoes when gamification mode is on
+            if (isGamificationOn) {
+                setTotalTomatoes(prev => prev + 1);
+            }
 
             // Determine next break type
-            const nextBreak = (counts.pomodoro + 1) % settings.longBreakInterval === 0 ? 'longBreak' : 'shortBreak';
+            const nextBreak = newPomodoroCount % settings.longBreakInterval === 0 ? 'longBreak' : 'shortBreak';
             setMode(nextBreak);
 
             // Check if this is the last pomodoro
-            if (counts.pomodoro + 1 === iterations) {
+            if (newPomodoroCount === iterations) {
                 setCurrentIteration(iterations - 1); // Ensure we don't exceed total iterations
             }
         } else {
@@ -67,7 +86,7 @@ export const Pomodoro = () => {
         if (!(mode !== 'pomodoro' && currentIteration + 1 >= iterations)) {
             setIsActive(true);
         }
-    }, [mode, iterations, counts, currentIteration, settings.longBreakInterval, resetTimer]);
+    }, [mode, iterations, counts, currentIteration, settings.longBreakInterval, resetTimer, isGamificationOn]);
 
 
     useEffect(() => {
@@ -163,6 +182,9 @@ export const Pomodoro = () => {
                 onRestart={handleRestart}
                 onUp={onUp}
                 onDown={onDown}
+                isGamificationOn={isGamificationOn}
+                initialMinutes={settings[mode]}
+                totalTomatoes={isGamificationOn ? totalTomatoes : 0}
             />
 
         </div>

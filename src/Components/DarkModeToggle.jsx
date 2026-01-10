@@ -31,9 +31,8 @@ export const DarkModeToggle = () => {
     return (
         <button
             onClick={toggleDarkMode}
-            className="fixed top-4 left-4 z-50 p-2 bg-transparent border-0 transition-opacity duration-200 cursor-pointer text-slate-800 dark:text-slate-100 hover:opacity-70"
+            className="p-2 glass-card backdrop-blur-xl rounded-xl transition-opacity duration-200 cursor-pointer text-slate-800 dark:text-slate-100 hover:opacity-70 shadow-lg"
             aria-label="Toggle dark mode"
-            style={{ position: 'fixed', top: '1rem', left: '1rem' }}
         >
             {isDark ? (
                 <Brightness7Icon sx={{ fontSize: 24 }} />

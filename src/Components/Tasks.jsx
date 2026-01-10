@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import DoneIcon from '@mui/icons-material/Done';
+import TomatoIcon from './TomatoIcon';
 
 const whooshAudio = new Audio('/sounds/whoosh.mp3');
 
-export const Tasks = () => {
+export const Tasks = ({ isGamificationOn = false }) => {
     const [isAddingTask, setIsAddingTask] = useState(false);
     const [hoveredTaskDoneId, setHoveredTaskDoneId] = useState(null);
     const [hoveredTaskId, setHoveredTaskId] = useState(null);
@@ -95,13 +96,13 @@ export const Tasks = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center px-4 py-8 lg:w-1/4 lg:px-6'>
+        <div className='flex flex-col justify-center items-center px-4 py-6 sm:py-8 lg:w-2/5 lg:px-6'>
             <div className='flex flex-col w-full max-w-md'>
-                <p className='flex justify-center items-center mb-6'>
-                    <strong className='text-4xl font-semibold text-slate-800 dark:text-slate-100'>
+                <p className='flex justify-center items-center mb-4 sm:mb-6'>
+                    <strong className='text-3xl sm:text-4xl font-semibold text-slate-800 dark:text-slate-100'>
                         Tasks
                     </strong>
-                    <span className='ml-3 text-3xl font-medium text-slate-600 dark:text-slate-300'>
+                    <span className='ml-3 text-2xl sm:text-3xl font-medium text-slate-600 dark:text-slate-300'>
                         {tasks.length}
                     </span>
                 </p>
@@ -120,26 +121,36 @@ export const Tasks = () => {
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                     key={task.id}
-                                                    className={`flex flex-col w-5/6 p-4 mb-2 glass-card rounded-xl transition-all duration-200 ${task.isFinished ? 'opacity-70' : ''}`}
+                                                    className={`flex flex-col w-5/6 p-4 mb-2 glass-card rounded-xl transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-[0.98] ${task.isFinished ? 'opacity-70' : ''}`}
                                                     onMouseEnter={() => setHoveredTaskId(task.id)}
                                                     onMouseLeave={() => setHoveredTaskId(null)}
                                                 >
                                                     <div className="flex items-center w-full">
-                                                        <IconButton
-                                                            onClick={() => handleTaskDone(task.id)}
-                                                            size="small"
-                                                            onMouseEnter={() => setHoveredTaskDoneId(task.id)}
-                                                            onMouseLeave={() => setHoveredTaskDoneId(null)}
-                                                            className="flex-shrink-0 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100"
-                                                        >
-                                                            {task.isFinished ? (
-                                                                <CheckCircleOutlineIcon className="text-slate-600 dark:text-slate-300" />
-                                                            ) : hoveredTaskDoneId === task.id ? (
-                                                                <CheckCircleOutlineIcon className="text-slate-500 dark:text-slate-400" />
-                                                            ) : (
-                                                                <RadioButtonUncheckedIcon className="text-slate-400 dark:text-slate-500" />
-                                                            )}
-                                                        </IconButton>
+                                                        {isGamificationOn ? (
+                                                            <IconButton
+                                                                onClick={() => handleTaskDone(task.id)}
+                                                                size="small"
+                                                                className="flex-shrink-0 transition-all duration-300 ease-in-out hover:scale-110 active:scale-95"
+                                                            >
+                                                                <TomatoIcon isDone={task.isFinished} size={28} />
+                                                            </IconButton>
+                                                        ) : (
+                                                            <IconButton
+                                                                onClick={() => handleTaskDone(task.id)}
+                                                                size="small"
+                                                                onMouseEnter={() => setHoveredTaskDoneId(task.id)}
+                                                                onMouseLeave={() => setHoveredTaskDoneId(null)}
+                                                                className="flex-shrink-0 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 transition-all duration-300 ease-in-out hover:scale-110 active:scale-95"
+                                                            >
+                                                                {task.isFinished ? (
+                                                                    <CheckCircleOutlineIcon className="text-slate-600 dark:text-slate-300" />
+                                                                ) : hoveredTaskDoneId === task.id ? (
+                                                                    <CheckCircleOutlineIcon className="text-slate-500 dark:text-slate-400" />
+                                                                ) : (
+                                                                    <RadioButtonUncheckedIcon className="text-slate-400 dark:text-slate-500" />
+                                                                )}
+                                                            </IconButton>
+                                                        )}
                                                         <div className="overflow-hidden flex-grow mx-2">
                                                             {editingTaskId === task.id ? (
                                                                 <textarea
